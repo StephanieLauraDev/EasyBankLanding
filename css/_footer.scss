@@ -1,0 +1,185 @@
+.footer {
+
+    background-color: $darkBlue;
+    color: $white; 
+    text-align: center;
+
+    @include breakpoint-up(large) {
+        text-align: left;
+    }
+
+    .container {
+
+        @include breakpoint-up(medium) {
+            display: grid;
+            grid-template-columns: 2fr 2fr 2fr;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 1rem;
+            justify-items: start;
+            grid-template-areas: 
+                "logo links-top cta"
+                "socials links-btm copyright"
+            ;
+        }
+
+        @include breakpoint-up(large) {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 3fr;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 1rem;
+            justify-items: start;
+            grid-template-areas: 
+                "logo links-left links-right cta"
+                "socials links-left links-right copyright"
+            ;
+        }
+    }
+
+    a {
+        color: $white;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            color: $brightCyan;
+        }
+    }
+
+    &__logo {
+       
+        display: inline-block;
+
+        @include breakpoint-down(medium){
+            margin-bottom: 1.875rem;
+        }
+
+        @include breakpoint-up(medium){
+            grid-area: logo;
+        }
+
+        @include breakpoint-up(large) {
+            grid-area: logo;
+        }
+    }
+
+    &__social {
+
+        a {
+            display: inline-block;
+            height: 1.25rem;
+            
+            svg path {
+                transition: all 200ms ease-in;
+            }
+
+            &:hover svg path {
+                transform: scale(1.04);
+                fill: $brightCyan;
+            }
+        }
+
+        a:not(:last-child) {
+            margin-right: 1rem;
+        }
+
+        
+
+        @include breakpoint-down(small){
+            margin-bottom: 1.875rem;
+        }
+
+        @include breakpoint-up(medium) {
+            grid-area: socials;
+            align-self: end;
+
+            a:not(:last-child) {
+                margin-right: 0.5rem;
+            }
+        }
+
+        @include breakpoint-up(large){
+            a:not(:last-child) {
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    &__links {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        line-height: 1.6;
+        font-size: 0.9375rem;
+
+        @include breakpoint-up(medium) {
+            align-items: start;
+        }
+
+        &.col_left {
+
+
+            @include breakpoint-up(medium){
+                grid-area: links-top;
+                text-align: right;
+
+            }
+
+            @include breakpoint-up(large) {
+                grid-area: links-left;
+               text-align: right;
+            }
+        }
+
+        &.col_right {
+            @include breakpoint-down(small){
+                margin-bottom: 1.875rem;
+            }
+
+            @include breakpoint-up(medium){
+                grid-area: links-btm;
+                text-align: right;
+            }
+
+            @include breakpoint-up(large) {
+                grid-area: links-right;
+                text-align: right;
+            }
+        }
+    }
+
+    &__cta {
+
+        a.button {
+            @include breakpoint-down(small){
+                margin-bottom: 1.875rem;
+            }
+        }
+
+
+        @include breakpoint-up(medium) {
+            grid-area: cta;
+            justify-self: end;
+            text-align: right;
+        }
+    }
+
+    &__copyright {
+
+        @include breakpoint-up(medium) {
+            grid-area: copyright;
+            justify-self: end;
+            text-align: right;
+            align-self: end;
+            font-size: 0.85rem;
+        }
+
+        .attribution {
+            font-size: 0.70rem;
+        }
+        
+    }
+
+    
+
+}
